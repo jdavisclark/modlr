@@ -1,4 +1,0 @@
-modlr
-=====
-
-javascript data modeling
