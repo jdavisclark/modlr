@@ -19,7 +19,8 @@
     "data"
   ],
   "dependencies": {
-    "mongoose": "~3.6.11"
+    "selfish": "~0.3.2",
+    "underscore": "~1.4.4"
   },
   "license": "MIT",
   "engines": {

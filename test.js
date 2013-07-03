@@ -2,20 +2,24 @@ var modlr = require("./modlr")
 	, Base = require("selfish").Base;
 
 var PersonSchema = new modlr.Schema({
-	name: String,
+	name: {
+		type: String,
+		required: true
+	},
 	age: Number
 });
 
-PersonSchema.validate("name").required();
+PersonSchema.virtual("foo").get(function() {
+	return "bar";
+});
+
 
 var Person = modlr.Model(PersonSchema);
 
 var me = Person.new({
-	name: "Davis",
 	age: 24
 });
 
-var s = me.validate();
-console.log(s);
+me.validate();
 
-console.log(me.age);
+console.log(me.name)
