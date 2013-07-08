@@ -1,29 +1,28 @@
 {
   "name": "modlr",
-  "version": "0.0.1",
-  "author": "Davis Clark <jdc0589@gmail.com>",
-  "description": "a datastore agnostic modeling framework",
-  "contributors": [
-    {
-      "name": "Davis Clark",
-      "email": "jdc0589@gmail.com"
-    }
-  ],
-  "main": "./modlr",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/jdc0589/modlr.git"
-  },
-  "keywords": [
-    "model",
-    "data"
-  ],
+  "version": "0.0.0",
+  "description": "backend agnostic data modling and validation framework",
+  "main": "modlr.js",
   "dependencies": {
-    "selfish": "~0.3.2",
     "underscore": "~1.4.4"
   },
-  "license": "MIT",
-  "engines": {
-    "node": ">=0.6"
+  "devDependencies": {},
+  "scripts": {
+    "test": "./test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/jdc0589/modlr.git"
+  },
+  "keywords": [
+    "data",
+    "model",
+    "schema",
+    "validation"
+  ],
+  "author": "Davis Clark",
+  "license": "BSD",
+  "bugs": {
+    "url": "https://github.com/jdc0589/modlr/issues"
   }
 }

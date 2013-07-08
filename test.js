@@ -6,6 +6,10 @@ var PersonSchema = new modlr.Schema({
 		type: String,
 		required: true
 	},
+	occupation: {
+		type: String,
+		required: false
+	},
 	age: Number
 });
 
@@ -16,10 +20,11 @@ PersonSchema.virtual("foo").get(function() {
 
 var Person = modlr.Model(PersonSchema);
 
-var me = Person.new({
-	age: 24
+var me = new Person({
+	age: 24,
+	name: "Davis"
 });
 
 me.validate();
 
-console.log(me.name)
+console.log(me.name, me.foo, me.occupation);
