@@ -8,7 +8,8 @@ var PersonSchema = new modlr.Schema({
 	},
 	occupation: {
 		type: String,
-		required: false
+		required: false,
+		default: "developer"
 	},
 	age: Number
 });
