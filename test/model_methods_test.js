@@ -51,66 +51,19 @@ var personSchema = new modlr.Schema({
 
 var Person = new modlr.Model(personSchema);
 
-exports['defaults'] = function(test) {
-	var p = new Person({});
+exports["works"] = function(test) {
+	var p = new Person();
 
-	var errors = p.validate();
-
-	// everything is required but has a valid default. should validate
-	test.deepEqual(errors, []);
-
-	test.equal(p.name, "Davis");
-	test.equal(p.age, 24);
-	test.deepEqual(p.languages, ["english"]);
-
-	test.done();
-};
-
-exports["string default override"] = function(test) {
-	var p = new Person({
-		name: "Someone"
-	});
-
-	test.equal(p.name, "Someone");
-	test.done();
-};
-
-exports["number default override"] = function(test) {
-	var p = new Person({
-		age: 300
-	});
-
-	test.equal(p.age, 300);
-	test.done();
-};
-
-exports["object default override"] = function(test) {
-	var p = new Person({
+	test.deepEqual(p.toObject(), {
+		name: "Davis",
+		age: 24,
+		languages: ["english"],
 		friends: {
-			"Bobby": {
-				knownSince: 1910
+			"Jimmy": {
+				knownSince: 2009
 			}
 		}
 	});
 
-	test.deepEqual(p.friends, {
-		"Bobby": {
-			knownSince: 1910
-		}
-	});
-
-	test.done();
-};
-
-exports['array default override'] = function(test) {
-	var p = new Person({
-		languages: [
-				"english",
-				"gaulish",
-				"latin"
-		]
-	});
-
-	test.deepEqual(p.languages, ["english", "gaulish", "latin"]);
 	test.done();
 };

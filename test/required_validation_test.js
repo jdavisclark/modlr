@@ -38,55 +38,57 @@ var personSchema = new modlr.Schema({
 	friends: {
 		type: Object,
 		required: true
+	},
+	isAwesome: {
+		type: Boolean,
+		required: true
 	}
 });
 
 var Person = new modlr.Model(personSchema);
 
 
-exports['template values passthrough'] = function(test) {
-	test.expect(4);
-
-	var p = new Person({
-		name: "Davis Clark",
-		age: 24,
-		interests: ["programming"],
-		friends: {
-			"Brendan": {
-				age: 24,
-				knownSince: 2009
-			}
+var template = {
+	name: "Davis Clark",
+	age: 24,
+	interests: ["programming"],
+	friends: {
+		Jim: {
+			knownSince: 2009
 		}
-	});
+	},
+	isAwesome: true
+};
+
+exports['template values passthrough'] = function(test) {
+	var p = new Person(template);
 
 	// tests here
 	test.equal(p.name, "Davis Clark");
 	test.equal(p.age, 24);
 	test.deepEqual(p.interests, ["programming"]);
 	test.deepEqual(p.friends, {
-		"Brendan": {
-			age: 24,
+		"Jim": {
 			knownSince: 2009
 		}
 	});
+	test.equal(p.isAwesome, true);
 
 	test.done();
 };
 
 exports['required string'] = function(test) {
 	var self = this;
-	debugger;
-	var p = new Person({
-		age: 24,
-		interests: ["programming"],
-		friends: {}
-	});
+	var p = new Person(template);
+
+	delete p.name;
 
 	var errors = p.validate();
 	test.deepEqual(errors, [{
-		path: "name",
-		type: "Required"
-	}]);
+			path: "name",
+			type: "Required"
+		}
+	]);
 
 	p.name = "Davis";
 	errors = p.validate();
@@ -99,17 +101,15 @@ exports['required string'] = function(test) {
 exports['required number'] = function(test) {
 	var self = this;
 
-	var p = new Person({
-		name: "davis",
-		interests: ["programming"],
-		friends: {}
-	});
+	var p = new Person(template);
+	delete p.age;
 
 	var err = p.validate();
 	test.deepEqual(err, [{
-		type: "Required",
-		path: "age"
-	}]);
+			type: "Required",
+			path: "age"
+		}
+	]);
 
 	p.age = 24;
 
@@ -122,17 +122,15 @@ exports['required number'] = function(test) {
 exports['required array'] = function(test) {
 	var self = this;
 
-	var p = new Person({
-		name: "davis",
-		age: 24,
-		friends: {}
-	});
+	var p = new Person(template);
+	delete p.interests;
 
 	var err = p.validate();
 	test.deepEqual(err, [{
-		type: "Required",
-		path: "interests"
-	}]);
+			type: "Required",
+			path: "interests"
+		}
+	]);
 
 	p.interests = ["stuff"];
 	err = p.validate();
@@ -144,22 +142,34 @@ exports['required array'] = function(test) {
 exports['required object'] = function(test) {
 	var self = this;
 
-	var p = new Person({
-		name: "davis",
-		age: 24,
-		interests: []
-	});
+	var p = new Person(template);
+	delete p.friends;
 
 	var err = p.validate();
 	test.deepEqual(err, [{
-		type: "Required",
-		path: "friends"
-	}]);
+			type: "Required",
+			path: "friends"
+		}
+	]);
 
 	p.friends = {};
 	err = p.validate();
 
 	test.deepEqual(err, []);
 
+	test.done();
+};
+
+exports['required object'] = function(test) {
+	var p = new Person();
+	var errors = p.validate();
+	var expextedErrors = Object.keys(template).map(function(key) {
+		return {
+			path: key,
+			type: "Required"
+		};
+	});
+
+	test.deepEqual(errors, expextedErrors);
 	test.done();
 };
