@@ -23,52 +23,50 @@ https://github.com/caolan/nodeunit
 */
 
 var schemaTemplate = {
-	name: {
-		type: String,
-		required: true,
-		default: "Davis"
+	firstName: {
+		type: String
 	},
+	lastName: String,
 	age: {
-		type: Number,
-		required: true,
-		default: 24
+		type: Number
 	},
 	languages: {
-		type: Array,
-		required: true,
-		default: ["english"]
+		type: Array
 	},
 	friends: {
-		type: Object,
-		required: true,
-		default: {
-			"Jimmy": {
-				knownSince: 2009
-			}
-		}
+		type: Object
 	},
 	isAwesome: {
-		type: Boolean,
-		required: true,
-		default: true
+		type: Boolean
 	},
 	birthday: {
-		type: Date,
-		required: true,
-		default: new Date(5,19,1989)
+		type: Date
 	}
 };
 
 var personSchema = new modlr.Schema(schemaTemplate);
 
-personSchema.virtual("birthdayIsoString").get(function() {
-	return this.birthday.toISOString();
-});
+personSchema.virtual("birthdayIsoString")
+	.get(function() {
+		return this.birthday.toISOString();
+	});
+
+personSchema.virtual("fullName")
+	.get(function() {
+		return this.firstName + " " + this.lastName;
+	})
+	.set(function(val) {
+		var parts = val.split(" ");
+		this.firstName = parts[0];
+		this.lastName = parts[1];
+	});
+
 
 var Person = new modlr.Model(personSchema);
 
 var template = {
-	name: "Jim",
+	firstName: "Jim",
+	lastName: "White",
 	age: 50,
 	languages: ["spanish"],
 	friends: {
@@ -77,12 +75,23 @@ var template = {
 		}
 	},
 	isAwesome: false,
-	birthday: new Date(5,19,1989)
+	birthday: new Date(5, 19, 1989)
 };
 
 exports["virtual get"] = function(test) {
 	var p = new Person(template);
 	test.strictEqual(p.birthdayIsoString, template.birthday.toISOString());
+	test.strictEqual(p.fullName, template.firstName + " " + template.lastName);
+
+	test.done();
+};
+
+exports["virtual set"] = function(test) {
+	var p = new Person(template);
+
+	p.fullName = "Davis Clark";
+	test.strictEqual(p.firstName, "Davis");
+	test.strictEqual(p.lastName, "Clark");
 
 	test.done();
 };
