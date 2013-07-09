@@ -4,7 +4,8 @@
   "description": "backend agnostic data modling and validation framework",
   "main": "modlr.js",
   "dependencies": {
-    "underscore": "~1.4.4"
+    "underscore": "~1.4.4",
+    "q": "~0.9.6"
   },
   "devDependencies": {
     "grunt-contrib-jshint": "~0.6.0",
