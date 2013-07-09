@@ -37,6 +37,9 @@ var schemaTemplate = {
 	},
 	isAwesome: {
 		type: Boolean
+	},
+	birthday: {
+		type: Date
 	}
 };
 
@@ -52,7 +55,8 @@ var template = {
 			knownSince: 1850
 		}
 	},
-	isAwesome: false
+	isAwesome: false,
+	birthday: new Date(5, 19, 1989)
 };
 
 var typeVals = [{
@@ -72,6 +76,9 @@ var typeVals = [{
 	}, {
 		type: Boolean,
 		val: true
+	}, {
+		type: Date,
+		val: new Date(5, 5, 1980)
 	}
 ];
 
@@ -95,6 +102,10 @@ var typesToTest = [{
 		type: Boolean,
 		path: "isAwesome",
 		expected: modlr.types.getTypeString(Boolean)
+	}, {
+		type: Date,
+		path: "birthday",
+		expected: modlr.types.getTypeString(Date)
 	}
 ];
 

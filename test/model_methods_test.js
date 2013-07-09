@@ -46,6 +46,11 @@ var personSchema = new modlr.Schema({
 				knownSince: 2009
 			}
 		}
+	},
+	birthday: {
+		type: Date,
+		required: true,
+		default: new Date(5,19,1989)
 	}
 });
 
@@ -59,7 +64,8 @@ var template = {
 		"Jimmy": {
 			knownSince: 2009
 		}
-	}
+	},
+	birthday: new Date(5,19,1989)
 };
 
 exports["toObject"] = function(test) {

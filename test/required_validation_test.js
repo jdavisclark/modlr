@@ -42,6 +42,10 @@ var personSchema = new modlr.Schema({
 	isAwesome: {
 		type: Boolean,
 		required: true
+	},
+	birthday: {
+		type: Date,
+		required: true
 	}
 });
 
@@ -57,7 +61,8 @@ var template = {
 			knownSince: 2009
 		}
 	},
-	isAwesome: true
+	isAwesome: true,
+	birthday: new Date(5,19,1989)
 };
 
 exports['template values passthrough'] = function(test) {
@@ -153,7 +158,28 @@ exports['required object'] = function(test) {
 	test.done();
 };
 
-exports['required object'] = function(test) {
+exports['required date'] = function(test) {
+	var self = this;
+
+	var p = new Person(template);
+	delete p.birthday;
+
+	var err = p.validate();
+	test.deepEqual(err, [{
+			type: "Required",
+			path: "birthday"
+		}
+	]);
+
+	p.birthday = new Date(5,19,1989);
+	err = p.validate();
+
+	test.deepEqual(err, undefined);
+
+	test.done();
+};
+
+exports['all invalid fields'] = function(test) {
 	var p = new Person();
 	var errors = p.validate();
 	var expextedErrors = Object.keys(template).map(function(key) {

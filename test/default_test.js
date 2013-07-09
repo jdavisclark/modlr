@@ -51,6 +51,11 @@ var schemaTemplate = {
 		type: Boolean,
 		required: true,
 		default: true
+	},
+	birthday: {
+		type: Date,
+		required: true,
+		default: new Date(5,19,1989)
 	}
 };
 
@@ -66,7 +71,8 @@ var template = {
 			knownSince: 1850
 		}
 	},
-	isAwesome: false
+	isAwesome: false,
+	birthday: new Date(5,19,1989)
 };
 
 exports['defaults'] = function(test) {
