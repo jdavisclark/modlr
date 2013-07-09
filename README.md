@@ -1,6 +1,6 @@
 modlr
 =====
-modlr is a database agnostic modeling framework for node.js (and the browser at some point). modlr lets you define model schemas very much like Mongoose. Schema definitions are extremely similar to Mongoose, but not quite the same.
+modlr is a database agnostic modeling framework for node.js (and the browser at some point). modlr lets you define model schemas very much like Mongoose.
 
 What modlr suports:
 - field types (String, Number, Array, Object, Boolean, Date)
