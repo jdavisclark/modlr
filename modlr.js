@@ -4,3 +4,4 @@ var Schema = require("./lib/schema"),
 
 exports.Schema = Schema;
 exports.Model = Model;
+exports.types = require("./lib/types");

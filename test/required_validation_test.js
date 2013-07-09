@@ -63,16 +63,9 @@ var template = {
 exports['template values passthrough'] = function(test) {
 	var p = new Person(template);
 
-	// tests here
-	test.equal(p.name, "Davis Clark");
-	test.equal(p.age, 24);
-	test.deepEqual(p.interests, ["programming"]);
-	test.deepEqual(p.friends, {
-		"Jim": {
-			knownSince: 2009
-		}
+	Object.keys(template).forEach(function(key) {
+		test.deepEqual(p[key], template[key]);
 	});
-	test.equal(p.isAwesome, true);
 
 	test.done();
 };

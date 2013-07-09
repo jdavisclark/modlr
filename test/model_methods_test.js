@@ -51,10 +51,7 @@ var personSchema = new modlr.Schema({
 
 var Person = new modlr.Model(personSchema);
 
-exports["works"] = function(test) {
-	var p = new Person();
-
-	test.deepEqual(p.toObject(), {
+var template = {
 		name: "Davis",
 		age: 24,
 		languages: ["english"],
@@ -63,7 +60,14 @@ exports["works"] = function(test) {
 				knownSince: 2009
 			}
 		}
-	});
+	};
+
+exports["toObject"] = function(test) {
+	var p = new Person();
+	test.deepEqual(p.toObject(), template);
+
+	var p2 = new Person(template);
+	test.deepEqual(p2.toObject(), template);
 
 	test.done();
 };
