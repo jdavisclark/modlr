@@ -43,8 +43,5 @@ me.validate(); // [{ path: "name", type: "Required" }]
 
 me.name = true;
 me.validate(); //[{ path: "name", type: "Type", expectedType: "String",  }]
-
-
-
 ```
 
