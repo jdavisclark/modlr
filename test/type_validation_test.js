@@ -108,7 +108,7 @@ exports["type validation"] = function(test) {
 			var errors = p.validate();
 
 			if (type.type === toTest.type) {
-				test.deepEqual(errors, []);
+				test.deepEqual(errors, undefined);
 			} else {
 				test.deepEqual(errors, [{
 						path: toTest.path,

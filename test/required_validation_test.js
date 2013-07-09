@@ -86,7 +86,7 @@ exports['required string'] = function(test) {
 	p.name = "Davis";
 	errors = p.validate();
 
-	test.deepEqual(errors, []);
+	test.deepEqual(errors, undefined);
 
 	test.done();
 };
@@ -107,7 +107,7 @@ exports['required number'] = function(test) {
 	p.age = 24;
 
 	err = p.validate();
-	test.deepEqual(err, []);
+	test.deepEqual(err, undefined);
 
 	test.done();
 };
@@ -127,7 +127,7 @@ exports['required array'] = function(test) {
 
 	p.interests = ["stuff"];
 	err = p.validate();
-	test.deepEqual(err, []);
+	test.deepEqual(err, undefined);
 
 	test.done();
 };
@@ -148,7 +148,7 @@ exports['required object'] = function(test) {
 	p.friends = {};
 	err = p.validate();
 
-	test.deepEqual(err, []);
+	test.deepEqual(err, undefined);
 
 	test.done();
 };

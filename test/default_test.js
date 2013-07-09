@@ -74,7 +74,7 @@ exports['defaults'] = function(test) {
 	var errors = p.validate();
 
 	// everything is required but has a valid default. should validate
-	test.deepEqual(errors, []);
+	test.deepEqual(errors, undefined);
 
 	Object.keys(schemaTemplate).forEach(function(key) {
 		test.deepEqual(p[key], schemaTemplate[key]["default"]);
