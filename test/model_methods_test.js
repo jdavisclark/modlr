@@ -52,15 +52,15 @@ var personSchema = new modlr.Schema({
 var Person = new modlr.Model(personSchema);
 
 var template = {
-		name: "Davis",
-		age: 24,
-		languages: ["english"],
-		friends: {
-			"Jimmy": {
-				knownSince: 2009
-			}
+	name: "Davis",
+	age: 24,
+	languages: ["english"],
+	friends: {
+		"Jimmy": {
+			knownSince: 2009
 		}
-	};
+	}
+};
 
 exports["toObject"] = function(test) {
 	var p = new Person();

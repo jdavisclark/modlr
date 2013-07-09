@@ -79,23 +79,19 @@ var typesToTest = [{
 		type: String,
 		path: "name",
 		expected: modlr.types.getTypeString(String)
-	},
-	{
+	}, {
 		type: Number,
 		path: "age",
 		expected: modlr.types.getTypeString(Number)
-	},
-	{
+	}, {
 		type: Array,
 		path: "languages",
 		expected: modlr.types.getTypeString(Array)
-	},
-	{
+	}, {
 		type: Object,
 		path: "friends",
 		expected: modlr.types.getTypeString(Object)
-	},
-	{
+	}, {
 		type: Boolean,
 		path: "isAwesome",
 		expected: modlr.types.getTypeString(Boolean)

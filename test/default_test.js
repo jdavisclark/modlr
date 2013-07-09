@@ -77,7 +77,7 @@ exports['defaults'] = function(test) {
 	test.deepEqual(errors, []);
 
 	Object.keys(schemaTemplate).forEach(function(key) {
-		test.deepEqual(p[key], schemaTemplate[key].default);
+		test.deepEqual(p[key], schemaTemplate[key]["default"]);
 	});
 
 	test.done();
