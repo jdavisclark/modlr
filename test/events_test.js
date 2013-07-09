@@ -1,7 +1,6 @@
 'use strict';
 
-var modlr = require('../modlr.js'),
-	Q = require("q");
+var modlr = require('../modlr.js');
 
 /*
 ======== A Handy Little Nodeunit Reference ========
@@ -113,44 +112,4 @@ exports["failing to call next should throw"] = function(test) {
 	});
 
 	test.done();
-};
-
-exports["async pre validate"] = function(test) {
-	test.expect(4);
-	debugger;
-
-	var s = new modlr.Schema({
-		afterAsync: { type: Boolean, default: false },
-		afterSync: { type: Boolean, default: false }
-	});
-
-	// async middleware
-	s.pre("validate", true, function(next, done) {
-		var self = this;
-
-		setTimeout(function(){
-			self.afterAsync = true;
-			done();
-		}, 500);
-
-		next();
-	});
-
-	// sync middleware
-	s.pre("validate", function(next) {
-		this.afterSync = true;
-		next();
-	});
-
-	var S = new modlr.Model(s);
-	var tmp = new S();
-
-	tmp._schema.trigger("pre", "validate", tmp, function(err) {
-		test.strictEqual(err, undefined);
-		test.strictEqual(tmp.afterAsync, true);
-		test.done();
-	});
-
-	test.strictEqual(tmp.afterAsync, false);
-	test.strictEqual(tmp.afterSync, true);
 };
