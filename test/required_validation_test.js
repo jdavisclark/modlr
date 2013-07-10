@@ -76,9 +76,10 @@ exports['template values passthrough'] = function(test) {
 };
 
 exports['required string'] = function(test) {
+	debugger;
+
 	var self = this;
 	var p = new Person(template);
-
 	delete p.name;
 
 	var errors = p.validate();
