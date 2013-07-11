@@ -18,7 +18,7 @@ Javascript is dynamically typed, but there are times when you still want to be a
 
 
 
-### getting gtarted
+### getting started
 ```javascript
 var modlr = require("modlr");
 
