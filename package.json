@@ -1,0 +1,34 @@
+{
+  "name": "modlr",
+  "version": "0.0.0",
+  "description": "backend agnostic data modling and validation framework",
+  "main": "modlr.js",
+  "dependencies": {
+    "underscore": "~1.4.4",
+    "q": "~0.9.6"
+  },
+  "devDependencies": {
+    "grunt-contrib-jshint": "~0.6.0",
+    "grunt-contrib-nodeunit": "~0.2.0",
+    "grunt-contrib-watch": "~0.4.0",
+    "grunt": "~0.4.1"
+  },
+  "scripts": {
+    "test": "grunt nodeunit"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/jdc0589/modlr.git"
+  },
+  "keywords": [
+    "data",
+    "model",
+    "schema",
+    "validation"
+  ],
+  "author": "Davis Clark",
+  "license": "BSD",
+  "bugs": {
+    "url": "https://github.com/jdc0589/modlr/issues"
+  }
+}
