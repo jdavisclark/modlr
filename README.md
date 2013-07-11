@@ -3,7 +3,7 @@ modlr
 modlr is a database agnostic data modeling and specification framework for node.js (and the browser at some point). The API is heavily influenced by Mongoose.
 
 #### why do you need this?
-Javascript is dynamically typed, but there are times when you still want to be able to set up rules for required fields, type information, validation rules, etc... Lots of database client frameworks have this type of functionality built in (eg: Mongoose), but what happens if you want this kind of functionality without being tied to a specific database or database framework? There aren't a whole lot of options, and thats where modlr comes in. 
+Javascript is dynamically typed, but there are times when you still want to be able to set up rules for required fields, type information, validation rules, etc... Lots of database client frameworks have this type of functionality built in (eg: Mongoose), but what happens if you don't want to be tied to a specific database or database framework? There aren't a whole lot of options, and thats where modlr comes in. 
 
 #### what modlr suports:
 - field types (String, Number, Array, Object, Boolean, Date)
