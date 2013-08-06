@@ -6,6 +6,11 @@ module.exports = function(grunt) {
   grunt.initConfig({
     nodeunit: {
       files: ['test/**/*_test.js'],
+    },
+    bgShell: {
+      browserify: {
+        cmd: "mkdir -p build && browserify -s modlr -e modlr.js -o build/modlr.pack.js"
+      }
     }
   });
 
@@ -16,4 +21,6 @@ module.exports = function(grunt) {
 
   // Default task.
   grunt.registerTask('default', ['nodeunit']);
+
+  grunt.loadNpmTasks("grunt-bg-shell");
 };
