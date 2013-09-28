@@ -44,7 +44,7 @@ me.age = "yes";
 me.validate(); // [{path: "age", type: "Type", expectedType: "Number", actualType: "String"}]
 
 me.species = "asgard";
-me.validate(); // [{path: "species", type: "AllowedValue", allowedValues: ["human"]}]
+me.validate(); // [{path: "species", type: "AllowedValue", allowedValues: ["human"], {path: "age", type: "Type", expectedType: "Number", actualType: "String"}}]
 ```
 
 ___
